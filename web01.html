@@ -77,10 +77,6 @@
             margin: auto;
         }
 
-        .text {
-            background-color: transparent;
-        }
-
         .cell>.detail {
             display: none;
         }
@@ -118,109 +114,82 @@
         <tr id="1">
             <td>08:20<br />09:05</td>
             <td rowspan="2" class="h ql">
-                <div class="cell">
-                    <div id="two" class="detail">公教C411</div>
+                <div  id="one" class="cell">
+                    <div class="detail">公教C411</div>
                     <div>web应用技术开发</div>
                 </div>
             </td>
 
-            <td rowspan="2" class="h" class="text">
+            <td rowspan="2" class="h">
                 <div class="cell">
                     <div id="" class="detail">公教C411</div>
                     <div>西方文化简史</div>
                 </div>
             </td>
-            <td rowspan="2" class="fh" class="text">管理信息系统</td>
-            <td rowspan="2" class="h" class="text">运营管理</td>
-            <td rowspan="2" class="text"></td>
-            <td rowspan="2" class="text"></td>
-            <td rowspan="2" class="text"></td>
+            <td rowspan="2" class="fh">管理信息系统</td>
+            <td rowspan="2" class="h">运营管理</td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
         </tr>
 
         <!--2-->
-        <tr id="2">
+        <tr>
             <td>09:15<br />10:10</td>
         </tr>
 
         <!--3-->
         <tr id="3">
             <td>10:20<br />11:05</td>
-            <td rowspan="2" class="red" class="text">毛泽东思想与中国特色社会主义理论体系概论</td>
-            <td rowspan="2" class="qla" class="text">管理科学基础</td>
-            <td rowspan="2" class="red" class="text">毛泽东思想与中国特色社会主义理论体系概论</td>
-            <td rowspan="2" class="qla" class="text">管理科学基础</td>
-            <td rowspan="2" class="h" class="text">运营管理</td>
-            <td rowspan="2" class="qla" class="text">数学建模</td>
-            <td rowspan="2" class="text"></td>
+            <td rowspan="2" class="red">毛泽东思想与中国特色社会主义理论体系概论</td>
+            <td rowspan="2" class="qla">管理科学基础</td>
+            <td rowspan="2" class="red">毛泽东思想与中国特色社会主义理论体系概论</td>
+            <td rowspan="2" class="qla">管理科学基础</td>
+            <td rowspan="2" class="h">运营管理</td>
+            <td rowspan="2" class="qla">数学建模</td>
+            <td rowspan="2"></td>
         </tr>
 
         <!--4-->
-        <tr id="4">
+        <tr>
             <td>11:15<br />12:00</td>
         </tr>
 
         <!--5-->
         <tr id="5">
             <td>14:00<br />14:45</td>
-            <td rowspan="2" class="fh" class="text" class="fh">管理信息系统</td>
-            <td rowspan="2" class="grey" class="text">形势与政策</td>
-            <td rowspan="2" class="grey" class="text">web应用技术开发</td>
-            <td rowspan="2" class="ql" class="text">体育</td>
-            <td rowspan="2" class="red" class="text">毛泽东思想与中国特色社会主义理论体系概论</td>
-            <td rowspan="2" class="text"></td>
-            <td rowspan="2" class="text"></td>
+            <td rowspan="2" class="fh">管理信息系统</td>
+            <td rowspan="2" class="grey">形势与政策</td>
+            <td rowspan="2" class="grey">web应用技术开发</td>
+            <td rowspan="2" class="ql">体育</td>
+            <td rowspan="2" class="red">毛泽东思想与中国特色社会主义理论体系概论</td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
         </tr>
 
         <!--6-->
-        <tr id="6">
+        <tr>
             <td>14:55<br />15:40</td>
         </tr>
 
         <!--7-->
         <tr id="7">
             <td>16:00<br />16:45</td>
-            <td rowspan="2" class="fh" class="text">电子商务</td>
-            <td rowspan="2" class="green" class="text">数据库原理及应用</td>
-            <td rowspan="2" class="text"></td>
-            <td rowspan="2" class="text"></td>
-            <td rowspan="2" class="text"></td>
-            <td rowspan="2" class="text"></td>
-            <td rowspan="2" class="text"></td>
+            <td rowspan="2" class="fh">电子商务</td>
+            <td rowspan="2" class="green">数据库原理及应用</td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
+            <td rowspan="2"></td>
         </tr>
 
         <!--8-->
-        <tr id="8">
+        <tr>
             <td>16:55<br />17:40</td>
         </tr>
 
     </table>
-
-    <script>
-        let tdEl = document.getElementsByClassName("one");
-        let detailDivEl = document.getElementById("two");
-        tdEl.onclick = function (event) {
-            let names = detailDivEl.className.split(' ');
-
-            if (names.indexOf('open') >= 0) {
-                names = names.filter((x) => x != 'open')
-            }
-            else {
-                names.push('open');
-            }
-
-            console.log(names);
-
-            detailDivEl.className = names.join(' ');
-        };
-
-        detailDivEl.onmouseout = function (event) {
-            let names = detailDivEl.className.split(' ');
-            names = names.filter((x) => x != 'open')
-            detailDivEl.className = names.join(' ');
-        };
-
-    </script>
-
 </body>
 
 </html>
