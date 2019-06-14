@@ -1,0 +1,234 @@
+
+<html>
+    <head>
+        <style>
+            div {
+                text-align: center;
+            }
+    
+            span {
+                font-size: 20px;
+            }
+    
+            /* grid布局 */
+            #container {
+                display: grid;
+                grid-template-rows: 19px repeat(4, 7.15em);
+                grid-template-columns: repeat(8, 7.15em);
+                gap: 2px;
+    
+                text-align: center;
+                vertical-align: middle;
+                justify-content: center;
+            }
+    
+            /* 细节收展 */
+            .cell {
+                font-size: 1.1em;
+                font-weight: 700;
+                background-color: #00ffff;
+            }
+    
+            div.cell:hover {
+                position: relative;
+                top: 2px;
+                left: 2px;
+                box-shadow: 20px 20px 20px 20px rgba(110, 107, 107, 0.533);
+    
+            }
+    
+            .cell>.detail {
+                display: none;
+            }
+    
+            .cell>.detail.open {
+                display: block;
+                position: absolute;
+                width: 10em;
+                height: 10em;
+                background-color: rgb(252, 249, 249);
+            }
+    
+            /* 标题部分 */
+            p {
+                padding-top: 20px;
+                font-size: 30pt;
+                margin: 0px auto;
+                text-align: center;
+                vertical-align: bottom;
+            }
+    
+            div.empha {
+                font-weight: bold;
+                color: rgb(252, 77, 8);
+            }
+    
+            div>span.select {
+                font-size: 20pt;
+                font-weight: bold;
+                text-align: center;
+                vertical-align: middle;
+                color: red;
+            }
+        </style>
+    
+        <title> web work 02 </title>
+    </head>
+    
+    <body>
+        <p>课程表</p>
+        <div id="sel">
+    
+        </div>
+    
+        <div id="container">
+        </div>
+    
+    
+    
+        <script>
+            let item_array = new Array(
+                [" ", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+                ["第一大节",
+                    "web应用开发技术",
+                    "西方文化简史",
+                    "管理信息系统",
+                    "数据库原理及应用",
+                    " ",
+                    " ", " "],
+    
+                ["第二大节",
+                    "毛泽东思想与中国特色社会主义理论体系概论",
+                    "管理科学基础",
+                    "毛泽东思想与中国特色社会主义理论体系概论",
+                    "管理科学基础",
+                    "运营管理", "数学建模", " "],
+    
+                ["第三大节",
+                    "管理信息系统",
+                    "形势与政策",
+                    " ", " ",
+                    "毛泽东思想与中国特色社会主义理论体系概论", " ", " "],
+    
+                ["第四大节",
+                    "电子商务",
+                    "数据库原理及应用", " ", " ", " ", " ", " "]
+            );
+    
+            let item_array_detail = new Array(
+                [" ", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+                ["第一大节(08: 20 - 09: 05)",
+                    "web应用开发技术_01(西区第一公共教学楼C411)",
+                    "西方文化简史_01(西区第一公共教学楼C311)",
+                    "管理信息系统_02(西区第一公共教学楼C105)",
+                    "数据库原理及应用_01(西区第一公共教学楼B405)",
+                    " ", " ", " "],
+    
+                ["第二大节(10: 20 - 11: 05)",
+                    "毛泽东思想与中国特色社会主义理论体系概论_13(西区第一公共教学楼A120)",
+                    "管理科学基础_01(西区第一公共教学楼C411)",
+                    "毛泽东思想与中国特色社会主义理论体系概论_13(西区第一公共教学楼A120)",
+                    "管理科学基础_01(西区第一公共教学楼C411)",
+                    "运营管理_02(西区第一公共教学楼B405)", "数学建模入门_02(西区第一公共教学楼B117)", " "],
+    
+                ["第三大节(14: 00 - 14: 45)",
+                    "管理信息系统_02(西区第一公共教学楼C105)",
+                    "形势与政策2_41(西区第一公共教学楼C123)",
+                    " ", " ",
+                    "毛泽东思想与中国特色社会主义理论体系概论_13(西区第一公共教学楼A120)", " ", " "],
+    
+                ["第四大节(16: 00 - 16: 45)",
+                    "电子商务_01(西区第一公共教学楼B303)",
+                    "数据库原理及应用_01(西区第一公共教学楼C109)", " ", " ", " ", " ", " "]
+            );
+    
+    
+    
+            let e_container = document.getElementById("container");
+    
+            for (let i = 0; i < 5; i++) {
+                for (let j = 0; j < 8; j++) {
+                    let item = document.createElement('div');//少了一个let 声明便不成
+    
+                    let c_name;
+                    if (i == 0) {
+                        c_name = 'cell empha';
+                    }
+                    else {
+                        c_name = 'cell';
+                    }
+    
+                    item.className = c_name;
+                    e_container.append(item);
+    
+                    let item_div_detail = document.createElement('div');
+                    item_div_detail.innerHTML = item_array_detail[i][j];
+                    item_div_detail.className = 'detail';
+                    item.append(item_div_detail);
+    
+                    let item_div_main = document.createElement('div');
+                    item_div_main.innerHTML = item_array[i][j];
+                    item.append(item_div_main);
+    
+                    item_div_detail.onmouseout = function (event) {
+                        let names = item_div_detail.className.split(' ');
+                        names = names.filter((x) => x != 'open')
+                        item_div_detail.className = names.join(' ');
+                    };
+    
+                    if (i != 0 && item_array[i][j] != " ") {
+                        item.onclick = function (event) {
+                            let names = item_div_detail.className.split(' ');
+    
+                            if (names.indexOf('open') >= 0) {
+                                names = names.filter((x) => x != 'open')
+                            } else {
+                                names.push('open');
+                            }
+                            item_div_detail.className = names.join(' ');
+                        };
+                    }
+                }
+            };
+    
+    
+            let ctrl = document.getElementById('sel');
+            let ctrl_d = document.createElement('span');
+            ctrl_d.innerHTML = '单周';
+            ctrl_d.className = 'select';
+    
+            let ctrl_s = document.createElement('span');
+            ctrl_s.innerHTML = '双周';
+    
+            ctrl.append(ctrl_d);
+            ctrl.append(ctrl_s);
+    
+            ctrl_d.onclick = function (event) {
+                ctrl_d.className = 'select';
+                ctrl_s.className = '';
+    
+    
+                item_array[1][1] = "web应用开发技术";
+                item_array_detail[1][1] = "web应用开发技术_01(西区第一公共教学楼C411)";
+    
+                item_array[3][3] = " ";
+                item_array_detail[3][3] = " ";
+    
+                console.log(item_array[1][1],item_array_detail[1][1],item_array[3][3],item_array_detail[3][3]);
+    
+            };
+    
+            ctrl_s.onclick = function (event) {
+                ctrl_d.className = '';
+                ctrl_s.className = 'select';
+                item_array[3][3] = "web应用开发技术";
+                item_array_detail[3][3] = "web应用开发技术_01(西区第一公共教学楼C411)";
+    
+                item_array[1][1] = " ";
+                item_array_detail[1][1] = " ";
+                console.log(item_array[1][1],item_array_detail[1][1],item_array[3][3],item_array_detail[3][3]);
+            };
+    
+        </script>
+    </body>
+    </html>
