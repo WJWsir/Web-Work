@@ -52,10 +52,11 @@
         /* 标题部分 */
         p {
             padding-top: 20px;
+            padding-bottom: 10px ;
             font-size: 30pt;
             margin: 0px auto;
             text-align: center;
-            vertical-align: bottom;
+            vertical-align: middle;
         }
 
         div.emphasis {
@@ -69,6 +70,10 @@
             text-align: center;
             vertical-align: middle;
             color: red;
+        }
+
+        .love {
+            color: rgb(224, 33, 33);
         }
     </style>
 
@@ -230,10 +235,15 @@
         ctrl_d.innerHTML = '单周';
         ctrl_d.className = 'select';
 
+        let ctrl_middle = document.createElement('span');
+        ctrl_middle.innerHTML = '👈❤' ;
+        ctrl_middle.className = 'love';
+
         let ctrl_s = document.createElement('span');
         ctrl_s.innerHTML = '双周';
 
         ctrl.append(ctrl_d);
+        ctrl.append(ctrl_middle);
         ctrl.append(ctrl_s);
 
         /*----------------------------------------------------------*/
@@ -276,6 +286,7 @@
             ele_id_dsd33.innerHTML = ' ';
             ele_id_dsm33.innerHTML = ' '; 
             /*----------------------------------------------------------*/
+            ctrl_middle.innerHTML = '👈❤';
         };
 
         ctrl_s.onclick = function (event) {
@@ -294,6 +305,7 @@
             ele_id_dsd33.innerHTML = 'web应用开发技术<br/>(西区第一公共教学楼C411)';
             ele_id_dsm33.innerHTML = 'web应用开发技术'; 
             /*----------------------------------------------------------*/
+            ctrl_middle.innerHTML = '❤👉';
         };
 
     </script>
